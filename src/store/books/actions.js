@@ -17,7 +17,6 @@ export const fetchBooks = () => {
         `${apiUrl}/books`
       );
 
-      console.log("response.data: ", response.data);
       dispatch(fetchBooksSuccess(response.data));
     } catch (error) {
       console.error(error.message);

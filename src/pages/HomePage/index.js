@@ -1,46 +1,70 @@
 //module imports
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from "react-redux"
-import "../../components/Category/style.css"
-
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import "../../components/Category/style.css";
 
 //component imports
-import Category from "../../components/Category"
+import Category from "../../components/Category";
 
 //store imports
-import { selectCategories } from "../../store/categories/selectors"
-import { fetchCategories } from "../../store/categories/actions"
+import { selectCategories } from "../../store/categories/selectors";
+import { selectBooks } from "../../store/books/selectors";
+import { fetchCategories } from "../../store/categories/actions";
+import { fetchBooks } from "../../store/books/actions";
 
 //Bootstrap imports
-import Jumbotron from "react-bootstrap/Jumbotron"
-import CardGroup from "react-bootstrap/CardGroup"
-import { CardDeck } from 'react-bootstrap'
+import Carousel from "react-bootstrap/Carousel";
 
 export default function HomePage() {
-
   const dispatch = useDispatch();
-  const categories = useSelector(selectCategories)
+  const categories = useSelector(selectCategories);
+  const selectBooksSelector = useSelector(selectBooks);
 
   useEffect(() => {
-    dispatch(fetchCategories())
-  }, [dispatch])
-  console.log("categories is:", categories)
+    dispatch(fetchBooks());
+  }, [dispatch]);
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
+  const selectBooksOnSale = selectBooksSelector.filter((book) => {
+    return book.price_percentage !== 100;
+  });
 
   return (
     <div>
-      <Jumbotron>
-        <h1>Categories
-      </h1>
-      </Jumbotron>
+      <Carousel style={{ minHeight: "700px", marginBottom: "60px" }}>
+        {selectBooksOnSale.map((book) => {
+          return (
+            <Carousel.Item
+              key={book.id}
+              style={{
+                backgroundColor: "#e9ecdf",
+                textAlign: "center",
+                minHeight: "700px",
+              }}
+            >
+              <img
+                src={book.imageUrl}
+                alt={book.name}
+                style={{ maxHeight: "500px" }}
+              />
+              <Carousel.Caption
+                style={{ position: "static", marginBottom: "20px" }}
+              >
+                <h3 style={{ color: "black" }}>{book.name}</h3>
+              </Carousel.Caption>
+            </Carousel.Item>
+          );
+        })}
+      </Carousel>
+
       <div className="box">
-        {categories.map(category => (
+        {categories.map((category) => (
           <Category key={category.id} category={category} />
         ))}
       </div>
-
-
-
-
     </div>
-  )
+  );
 }

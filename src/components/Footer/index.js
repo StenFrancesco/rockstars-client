@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Styling
 import Card from "react-bootstrap/Card";
@@ -9,6 +10,7 @@ import {
   faLinkedin,
   faInstagramSquare,
   faFacebookSquare,
+  faYoutubeSquare,
 } from "@fortawesome/free-brands-svg-icons";
 
 export default function (props) {
@@ -27,9 +29,21 @@ export default function (props) {
       </Card>
       <Card>
         <ListGroup variant="flush">
-          <ListGroup.Item>Cras justo odio</ListGroup.Item>
-          <ListGroup.Item>Dapibus ac facilisis in</ListGroup.Item>
-          <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+          <ListGroup.Item>
+            <strong>Customer service</strong>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <span>Ordering & Delivery</span>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <span>Payment</span>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <span>Returnings</span>
+          </ListGroup.Item>
+          <ListGroup.Item>
+            <span>Warranty</span>
+          </ListGroup.Item>
         </ListGroup>
       </Card>
       <Card>
@@ -37,9 +51,10 @@ export default function (props) {
           <strong>Follow us on:</strong>
         </Card.Text>
         <Card.Text>
-          <FontAwesomeIcon icon={faLinkedin} />
-          <FontAwesomeIcon icon={faInstagramSquare} />
-          <FontAwesomeIcon icon={faFacebookSquare} />
+          <FontAwesomeIcon icon={faLinkedin} size="40px" />
+          <FontAwesomeIcon icon={faInstagramSquare} size="40px" />
+          <FontAwesomeIcon icon={faFacebookSquare} size="40px" />
+          <FontAwesomeIcon icon={faYoutubeSquare} size="40px" />
         </Card.Text>
       </Card>
     </div>

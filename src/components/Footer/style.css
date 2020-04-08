@@ -15,9 +15,18 @@
   background-color: #e9ecef;
   /* cursor: pointer; */
 }
+
+.footer-container .card .list-group .list-group-item span {
+  cursor: pointer;
+}
 .footer-container .card {
   width: 25%;
 }
 #follow-us {
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 0;
+}
+
+.svg-inline--fa {
+  font-size: 35px;
+  margin-right: 10px;
 }

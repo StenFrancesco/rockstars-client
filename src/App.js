@@ -14,6 +14,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import Books from "./pages/Books";
+import AddBookForm from "./pages/AddBook";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ function App() {
         <Route path="/books" component={Books} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
+        <Route path="/add-book" component={AddBookForm} />
       </Switch>
     </div>
   );

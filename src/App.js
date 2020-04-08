@@ -9,6 +9,7 @@ import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import Books from "./pages/Books";
+import Footer from "./components/Footer";
 import BooksByCategory from "./pages/Books/BooksByCategory"
 
 import { useDispatch, useSelector } from "react-redux";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/add-book" component={AddBookForm} />
         <Route exact path="/" component={HomePage} />
       </Switch>
+      <Footer />
     </div>
   );
 }

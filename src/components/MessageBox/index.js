@@ -16,6 +16,7 @@ export default function MessageBox() {
       variant={message.variant}
       dismissible={message.dismissable}
       onClose={message.dismissable ? () => dispatch(clearMessage()) : null}
+      className="mb-0"
     >
       {message.text}
     </Alert>

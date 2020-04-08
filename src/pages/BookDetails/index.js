@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Jumbotron } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 
@@ -13,15 +13,12 @@ function BookDetails() {
   const { bookId } = useParams();
   const dispatch = useDispatch();
   const bookDetails = useSelector(selectBookDetails(bookId));
-  const [details, setDetails] = useState(<Loading />);
-
-  useEffect(() => {
-    setDetails(<BookDetailsComponent />);
-  }, [bookDetails]);
 
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
+
+  const showDetails = bookDetails ? <BookDetailsComponent /> : <Loading />;
 
   console.log("bookId: ", bookId);
 
@@ -31,7 +28,7 @@ function BookDetails() {
         <h1>Book Title</h1>
         <h1>Author</h1>
       </Jumbotron>
-      <div>{details} </div>
+      <div>{showDetails} </div>
     </>
   );
 }

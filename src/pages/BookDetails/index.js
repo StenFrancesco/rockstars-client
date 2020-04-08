@@ -1,34 +1,36 @@
-import React, { useEffect } from "react";
-import { Jumbotron } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
-import { selectBookDetails } from "../../store/books/selectors";
+import { selectBooks } from "../../store/books/selectors";
 import { fetchBooks } from "../../store/books/actions";
 
 import BookDetailsComponent from "../../components/BookDetailsComponent/index";
 import Loading from "../../components/Loading";
 
 function BookDetails() {
-  const { bookId } = useParams();
+  const bookId = parseInt(useParams().bookId);
   const dispatch = useDispatch();
-  const bookDetails = useSelector(selectBookDetails(bookId));
+  const [bookDetails, setBookDetails] = useState(null);
+  const books = useSelector(selectBooks);
+
+  const selectBookDetails = (bookId) => {
+    return books.find((book) => book.id === bookId);
+  };
 
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
-  const showDetails = bookDetails ? <BookDetailsComponent /> : <Loading />;
+  useEffect(() => {
+    setBookDetails(selectBookDetails(bookId));
+  }, [bookId, books]);
 
-  console.log("bookId: ", bookId);
+  const showDetails = bookDetails ? <BookDetailsComponent book={bookDetails} /> : <Loading />;
 
   return (
     <>
-      <Jumbotron>
-        <h1>Book Title</h1>
-        <h1>Author</h1>
-      </Jumbotron>
-      <div>{showDetails} </div>
+      {showDetails}
     </>
   );
 }

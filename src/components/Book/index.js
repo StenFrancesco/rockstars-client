@@ -6,7 +6,7 @@ function Book({ book }) {
   return (
     <div className="book">
       <img width="150px" src={book.imageUrl} alt={book.author} />
-      <Link to={`/books/${book.id}`}>
+      <Link to={`/book-details/${book.id}`}>
       <h3 style={{fontSize: "16px"}}>{book.name}</h3>
       </Link>
       

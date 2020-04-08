@@ -136,7 +136,7 @@ export default function AddBookForm() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Price discount persentage</Form.Label>
+          <Form.Label>Price discount percentage</Form.Label>
           <Form.Control
             value={price_discount}
             onChange={(event) => setPrice_discount(event.target.value)}

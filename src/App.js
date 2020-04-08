@@ -14,6 +14,8 @@ import Footer from "./components/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import AddBookForm from "./pages/AddBook";
+
 
 function App() {
   const dispatch = useDispatch();
@@ -29,11 +31,12 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route path="/books/:name" component={Books} />
         <Route path="/books" component={Books} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
-        <Route path="/signup" component={SignUp} />
+        <Route path="/add-book" component={AddBookForm} />
+        <Route exact path="/" component={HomePage} />
       </Switch>
       <Footer />
     </div>

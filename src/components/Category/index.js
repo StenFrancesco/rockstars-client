@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 
 import "./style.css"
@@ -6,12 +7,12 @@ import "./style.css"
 export default function Category({ category }) {
 
   return (
- 
-    <div className="category">
-    <img width="300px" src={category.imageUrl} alt={category.name} />
-    <h3 style={{fontSize: "16px"}}>{category.name}</h3>
-    <br />
-    
-  </div>
+    <Link to={`/books/${category.name}`}>
+      <div className="category">
+        <img width="300px" src={category.imageUrl} alt={category.name} />
+        <h2><strong>{category.name}</strong></h2>
+        <br />
+      </div>
+    </Link>
   )
 }

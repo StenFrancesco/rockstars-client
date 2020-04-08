@@ -1,0 +1,46 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 100px 12.5%;
+  background-color: black;
+  background-color: #e9ecef;
+}
+
+.footer-container .card {
+  border: none;
+}
+
+.footer-container .card,
+.footer-container .card .list-group .list-group-item {
+  background-color: #e9ecef;
+  /* cursor: pointer; */
+}
+
+.footer-container .card .list-group .list-group-item span {
+  cursor: pointer;
+}
+.footer-container .card {
+  width: 25%;
+}
+#follow-us {
+  padding: 0.75rem 0;
+}
+
+#subscribe {
+  padding: 0.75rem 0;
+  margin: 0;
+}
+
+.card input,
+.card input:focus {
+  max-width: 220px;
+  border-radius: 3px;
+  border: none;
+  padding-left: 10px;
+  outline: none;
+}
+
+.svg-inline--fa {
+  font-size: 35px;
+  margin-right: 10px;
+}

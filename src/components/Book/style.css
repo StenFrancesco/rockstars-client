@@ -1,0 +1,27 @@
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .book {
+    padding: 40px 10px;
+    margin: 50px;
+    flex: 0 0 350px;
+    border: 1px solid rgb(59, 59, 57);
+    opacity: 85%;
+    background-color: #eaebe4;
+  }
+  
+  .book:hover {
+    opacity: 100%;
+  }
+  
+  img {
+    margin: 40px;
+  }
+
+  p {
+    font-size: 14px;
+  }

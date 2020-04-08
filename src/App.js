@@ -13,6 +13,7 @@ import Books from "./pages/Books";
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
+import AddBookForm from "./pages/AddBook";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/signup" component={SignUp} />
+        <Route path="/add-book" component={AddBookForm} />
       </Switch>
     </div>
   );

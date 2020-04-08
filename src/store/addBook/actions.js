@@ -1,6 +1,7 @@
 import { apiUrl} from "../../config/constants";
 import axios from "axios";
 import { selectUser } from "../user/selectors";
+import { selectCategories } from "../categories/selectors";
 import {
   appLoading,
   appDoneLoading,
@@ -29,7 +30,6 @@ export const addBook = (
     const { token, id } = selectUser(getState());
 
     dispatch(appLoading());
-    console.log(getState())
     try {
       const response = await axios.post(
         `${apiUrl}/user/add-book`,
@@ -66,27 +66,6 @@ export const addBook = (
         dispatch(setMessage("danger", true, error.message));
       }
       dispatch(appDoneLoading());
-    }
-  };
-};
-
-export const FETCH_CATEGORY_SUCCESS = "FETCH_CATEGORY_SUCCESS";
-
-export const fetchCategorySuccess = category => ({
-  type: FETCH_CATEGORY_SUCCESS,
-  payload: category
-});
-
-export const fetchCategory = () => {
-  return async (dispatch, getState) => {
-    try {
-      const response = await axios.get(
-        `${apiUrl}/category`
-      );
-
-      dispatch(fetchCategorySuccess(response.data.allCategories));
-    } catch (error) {
-      console.error(error.message);
     }
   };
 };

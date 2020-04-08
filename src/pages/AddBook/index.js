@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
@@ -7,11 +7,14 @@ import { selectUser } from "../../store/user/selectors";
 import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { Jumbotron } from "react-bootstrap";
-import { addBook, fetchCategory } from "../../store/addBook/actions";
+import { addBook } from "../../store/addBook/actions";
+import { fetchCategories } from "../../store/categories/actions";
+import { selectCategories } from "../../store/categories/selectors";
 
 export default function AddBookForm() {
   const { token } = useSelector(selectUser);
   const user = useSelector(selectUser);
+  const categories = useSelector(selectCategories)
 
   const [ISBN, setISBN] = useState("");
   const [name, setName] = useState("");
@@ -20,18 +23,19 @@ export default function AddBookForm() {
   const [price, setPrice] = useState(0);
   const [imageUrl, setImageUrl] = useState("");
   const [categoryId, setCategoryId] = useState("");
-  const [price_percentage, setPrice_percentage] = useState(100);
+  const [price_discount, setPrice_discount] = useState(0);
 
   const history = useHistory();
   const dispatch = useDispatch();
-  const artist = user.isArtist;
+  const admin = user.isAdmin;
+  const price_percentage = 100 - price_discount;
 
-  if (token === null || artist === false) {
+  if (token === null || admin === false) {
     history.push("/");
   }
-  
+
   useEffect(() => {
-    dispatch(fetchCategory());
+    dispatch(fetchCategories());
   }, [dispatch]);
 
   function submitForm(event) {
@@ -123,20 +127,19 @@ export default function AddBookForm() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Category Id</Form.Label>
-          <Form.Control
-            value={categoryId}
-            onChange={(event) => setCategoryId(event.target.value)}
-            type="number"
-            placeholder=""
-          />
+          <Form.Label>Category</Form.Label>
+          <Form.Control as="select" value={categoryId}
+            onChange={(event) => setCategoryId(event.target.value)}>
+              <option defaultValue='select' >select</option>
+          {categories.map(category => <option value={category.id} key={category.id}>{category.name}</option>)}
+          </Form.Control>
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Price percentage</Form.Label>
+          <Form.Label>Price discount persentage</Form.Label>
           <Form.Control
-            value={price_percentage}
-            onChange={(event) => setPrice_percentage(event.target.value)}
+            value={price_discount}
+            onChange={(event) => setPrice_discount(event.target.value)}
             type="number"
             placeholder=""
           />

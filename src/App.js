@@ -13,6 +13,7 @@ import { selectAppLoading } from "./store/appState/selectors";
 import { getUserWithStoredToken } from "./store/user/actions";
 import { Jumbotron } from "react-bootstrap";
 import Books from "./pages/Books";
+import BookDetails from "./pages/BookDetails";
 
 const Home = () => (
   <Jumbotron>
@@ -35,7 +36,8 @@ function App() {
       {isLoading ? <Loading /> : null}
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/books" component={Books} />
+        <Route exact path="/books" component={Books} />
+        <Route path="/books/:bookId" component={BookDetails} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
       </Switch>

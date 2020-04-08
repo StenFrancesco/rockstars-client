@@ -21,7 +21,7 @@ function Books() {
       </Jumbotron>
 
       <div className="box">
-        {books.map(book => (
+        {books.map((book) => (
           <Book key={book.id} book={book} />
         ))}
       </div>

@@ -3,6 +3,7 @@ import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import { NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { selectUser } from "../../store/user/selectors";
 import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
@@ -10,8 +11,12 @@ import LoggedOut from "./LoggedOut";
 
 export default function Navigation() {
   const token = useSelector(selectToken);
+  const user = useSelector(selectUser);
 
   const loginLogoutControls = token ? <LoggedIn /> : <LoggedOut />;
+
+  const admin = user.isAdmin;
+  const showAddBook = (token === null || admin === false) ? null : <NavbarItem path="/add-book" linkText="Add a new book" />
 
   return (
     <Navbar bg="light" expand="lg">
@@ -23,6 +28,7 @@ export default function Navigation() {
         <Nav style={{ width: "100%" }} fill>
           <NavbarItem path="/" linkText="Home" />
           <NavbarItem path="/books" linkText="Books" />
+          {showAddBook}
           {loginLogoutControls}
         </Nav>
       </Navbar.Collapse>

@@ -10,6 +10,7 @@ import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import Books from "./pages/Books";
 import Footer from "./components/Footer";
+import BooksByCategory from "./pages/Books/BooksByCategory"
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -31,7 +32,7 @@ function App() {
       <MessageBox />
       {isLoading ? <Loading /> : null}
       <Switch>
-        <Route path="/books/:name" component={Books} />
+        <Route path="/books/:name" component={BooksByCategory} />
         <Route path="/books" component={Books} />
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />

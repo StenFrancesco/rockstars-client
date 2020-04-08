@@ -5,10 +5,18 @@ import Book from "../../components/Book/index";
 import { useDispatch, useSelector } from "react-redux";
 import { selectBooks } from "../../store/books/selectors";
 import { fetchBooks } from "../../store/books/actions";
+import { useParams } from "react-router-dom"
 
-function Books() {
+export default function BooksByCategory() {
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
+  console.log("books is:", books)
+
+  const { name } = useParams();
+
+  const selectCategoryOfBook = books.filter((bookCat) => {
+    return bookCat.category.name === name
+  })
 
   useEffect(() => {
     dispatch(fetchBooks());
@@ -21,12 +29,10 @@ function Books() {
       </Jumbotron>
 
       <div className="box">
-        {books.map(book => (
+        {selectCategoryOfBook.map(book => (
           <Book key={book.id} book={book} />
         ))}
       </div>
     </div>
   );
 }
-
-export default Books;

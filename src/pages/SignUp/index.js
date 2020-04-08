@@ -47,32 +47,32 @@ export default function SignUp() {
     ) {
       dispatch(setMessage("danger", true, "Please fill in all the fields!"));
     } else {
-      // dispatch(
-      //   signUp(
-      //     firstName,
-      //     lastName,
-      //     phone,
-      //     email,
-      //     password,
-      //     street,
-      //     postalCode,
-      //     houseNumber,
-      //     city,
-      //     country
-      //   )
-      // );
-    }
+      dispatch(
+        signUp(
+          firstName,
+          lastName,
+          phone,
+          email,
+          password,
+          street,
+          postalCode,
+          houseNumber,
+          city,
+          country
+        )
+      );
 
-    setfirstName("");
-    setLastName("");
-    setPhone("");
-    setEmail("");
-    setPassword("");
-    setStreet("");
-    setPostalCode("");
-    setHouseNumber("");
-    setCity("");
-    setCountry("");
+      setfirstName("");
+      setLastName("");
+      setPhone("");
+      setEmail("");
+      setPassword("");
+      setStreet("");
+      setPostalCode("");
+      setHouseNumber("");
+      setCity("");
+      setCountry("");
+    }
   }
 
   return (
@@ -156,7 +156,7 @@ export default function SignUp() {
               value={houseNumber}
               onChange={(event) => setHouseNumber(event.target.value)}
               type="text"
-              placeholder="City"
+              placeholder="House number"
               required
             />
           </Form.Group>
@@ -200,12 +200,6 @@ export default function SignUp() {
         </Form.Text>
 
         <Form.Group className="mt-5">
-          <Form.Check
-            className="mb-3"
-            required
-            label="Agree to terms and conditions"
-            feedback="You must agree before submitting."
-          />
           <Button variant="primary" type="submit" onClick={submitForm}>
             Sign up
           </Button>
@@ -215,3 +209,10 @@ export default function SignUp() {
     </div>
   );
 }
+
+// <Form.Check
+// className="mb-3"
+// required
+// label="Agree to terms and conditions"
+// feedback="You must agree before submitting."
+// />

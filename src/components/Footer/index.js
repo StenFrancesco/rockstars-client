@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 
 // Styling
 import Card from "react-bootstrap/Card";
@@ -51,11 +50,15 @@ export default function (props) {
           <strong>Follow us on:</strong>
         </Card.Text>
         <Card.Text>
-          <FontAwesomeIcon icon={faLinkedin} size="40px" />
-          <FontAwesomeIcon icon={faInstagramSquare} size="40px" />
-          <FontAwesomeIcon icon={faFacebookSquare} size="40px" />
-          <FontAwesomeIcon icon={faYoutubeSquare} size="40px" />
+          <FontAwesomeIcon icon={faLinkedin} size="lg" />
+          <FontAwesomeIcon icon={faInstagramSquare} size="lg" />
+          <FontAwesomeIcon icon={faFacebookSquare} size="lg" />
+          <FontAwesomeIcon icon={faYoutubeSquare} size="lg" />
         </Card.Text>
+        <Card.Text id="subscribe">
+          <strong>Subscribe to our email:</strong>
+        </Card.Text>
+        <input type="text" placeholder="e-mail" />
       </Card>
     </div>
   );

@@ -1,9 +1,25 @@
+@keyframes slideInFromLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-2.5rem, 0);
+    background-color: rgb(245, 242, 224);
+  }
+  20% {
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 1;
+    background-color: white;
+  }
+}
+
 .box {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
   background-color: white;
+  animation: slideInFromLeft 2.5s ease;
 }
 
 .category {

@@ -1,0 +1,32 @@
+.item1 {
+  grid-area: left;
+}
+.item2 {
+  grid-area: right;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-areas: "left right";
+  grid-template-columns: 2fr 3fr;
+  grid-gap: 10px;
+  margin: 100px 200px 100px 50px;
+  border: 1px solid rgb(153, 153, 153);
+}
+
+.grid-container > div {
+  padding: 70px;
+}
+
+.review {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: rgb(245, 245, 245);
+}
+
+h1 {
+}
+
+p {
+  font-size: 20px;
+}

@@ -11,6 +11,7 @@ import { selectCategories } from "../../store/categories/selectors";
 import { selectBooks } from "../../store/books/selectors";
 import { fetchCategories } from "../../store/categories/actions";
 import { fetchBooks } from "../../store/books/actions";
+import "./style.css"
 
 //Bootstrap imports
 import Carousel from "react-bootstrap/Carousel";
@@ -34,13 +35,13 @@ export default function HomePage() {
 
   return (
     <div>
-      <Carousel style={{ minHeight: "700px", marginBottom: "60px" }}>
+      <Carousel style={{ minHeight: "700px", marginBottom: "60px" }} className="animated">
         {selectBooksOnSale.map((book) => {
           return (
             <Carousel.Item
               key={book.id}
               style={{
-                backgroundColor: "#e9ecdf",
+                backgroundColor: "#eaebe4",
                 textAlign: "center",
                 minHeight: "700px",
               }}

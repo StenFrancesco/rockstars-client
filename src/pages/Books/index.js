@@ -16,8 +16,8 @@ function Books() {
 
   return (
     <div>
-      <Jumbotron>
-        <h1>Books</h1>
+      <Jumbotron className="jumbo-bg">
+        <h1 style={{ fontWeight: "bold" }}>Books</h1>
       </Jumbotron>
 
       <div className="box">

@@ -8,6 +8,7 @@ import { useHistory, Link } from "react-router-dom";
 import { Col } from "react-bootstrap";
 import { Jumbotron } from "react-bootstrap";
 import { setMessage } from "../../store/appState/actions";
+import "./style.css"
 
 export default function SignUp() {
   const [firstName, setfirstName] = useState("");
@@ -77,10 +78,10 @@ export default function SignUp() {
 
   return (
     <div>
-      <Jumbotron>
-        <h1>Signup</h1>
+      <Jumbotron className="jumbo-bg">
+        <h1 style={{ fontWeight: "bold" }}>Signup</h1>
       </Jumbotron>
-      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5 mb-5">
+      <Form as={Col} md={{ span: 6, offset: 3 }} className="mt-5 mb-5 animated">
         <Form.Row>
           <Form.Group as={Col} controlId="firstName">
             <Form.Label>Firstname</Form.Label>

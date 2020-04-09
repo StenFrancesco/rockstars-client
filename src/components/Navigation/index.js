@@ -8,6 +8,8 @@ import { selectToken } from "../../store/user/selectors";
 import NavbarItem from "./NavbarItem";
 import LoggedIn from "./LoggedIn";
 import LoggedOut from "./LoggedOut";
+import "./style.css"
+import bookIcon from "../../images/bookIcon.png"
 
 export default function Navigation() {
   const token = useSelector(selectToken);
@@ -19,9 +21,9 @@ export default function Navigation() {
   const showAddBook = (token === null || admin === false) ? null : <NavbarItem path="/add-book" linkText="Add a new book" />
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="color-nav" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
-        YOUR PROJECT NAME
+        <img src={bookIcon} width="60px" /><strong>Once Open A Book</strong>
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">

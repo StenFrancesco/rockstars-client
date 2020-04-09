@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectBooks } from "../../store/books/selectors";
 import { fetchBooks } from "../../store/books/actions";
 import { useParams } from "react-router-dom"
+import "./style.css"
 
 export default function BooksByCategory() {
   const dispatch = useDispatch();
   const books = useSelector(selectBooks);
-  console.log("books is:", books)
 
   const { name } = useParams();
 
@@ -18,14 +18,17 @@ export default function BooksByCategory() {
     return bookCat.category.name === name
   })
 
+
+
   useEffect(() => {
     dispatch(fetchBooks());
   }, [dispatch]);
 
+
   return (
     <div>
-      <Jumbotron>
-        <h1>Books</h1>
+      <Jumbotron className="jumbo-bg">
+        <h1 style={{ fontWeight: "bold" }}>{name}</h1>
       </Jumbotron>
 
       <div className="box">

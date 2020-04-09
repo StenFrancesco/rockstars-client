@@ -10,9 +10,10 @@ import Login from "./pages/Login";
 import HomePage from "./pages/HomePage";
 import Books from "./pages/Books";
 import Footer from "./components/Footer";
-import BooksByCategory from "./pages/Books/BooksByCategory"
+import BooksByCategory from "./pages/Books/BooksByCategory";
 import BookDetails from "./pages/BookDetails";
 import AddBookForm from "./pages/AddBook";
+import Cart from "./pages/Cart";
 
 import { useDispatch, useSelector } from "react-redux";
 import { selectAppLoading } from "./store/appState/selectors";
@@ -38,6 +39,7 @@ function App() {
         <Route path="/signup" component={SignUp} />
         <Route path="/login" component={Login} />
         <Route path="/add-book" component={AddBookForm} />
+        <Route path="/cart" component={Cart} />
         <Route exact path="/" component={HomePage} />
       </Switch>
       <Footer />
